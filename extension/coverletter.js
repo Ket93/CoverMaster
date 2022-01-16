@@ -43,7 +43,7 @@ if (true) {
     }
 
     console.log('saved something')
-    chrome.storage.local.get(['options'], function (result) {
+    chrome.storage.local.get(['options'], function (result) { // users' options from options page (email, name, etc.)
         console.log('Value is: ', result.options)
         fetch(url, {
             method: "POST",
