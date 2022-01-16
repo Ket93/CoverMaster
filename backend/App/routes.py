@@ -1,6 +1,6 @@
 from asyncore import write
 from random import randint
-from App import app, evaluate, language
+from App import app
 from flask.globals import request
 from flask import send_from_directory, abort
 import os
@@ -51,12 +51,10 @@ def sorting():
         return f'{randName}'
     return "did not recieve data"
 
+
 @app.route('/savetemplate', methods=['POST'])
 def saveTemplate():
     print(request.files['template'])
-
-    with open('/template.docx', 'wb') as f:
-        f.write(request.files['template'])
-        print('saved?')
+    request.files['template'].save('asdf2.docx')
 
     return "recieved"
