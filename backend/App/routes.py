@@ -1,4 +1,5 @@
 from asyncore import write
+from random import Random
 from App import app, evaluate
 from flask.globals import request
 from flask import send_from_directory, abort
@@ -26,13 +27,13 @@ def download_file():
 
 
 @app.route('/download/<id>')
-def download_file_id(id):
+def download_file_id():
     try:
-        return send_from_directory(app.config['DOWNLOAD_FILE'], path=f'{id}.docx',
+        return send_from_directory(app.config['DOWNLOAD_FILE'], path=f"{id}.docx",
                                    as_attachment=True)
     except TypeError:
         return send_from_directory(app.config['DOWNLOAD_FILE'],
-                                   filename=f'{id}.docx', as_attachment=True)
+                                   filename=f"{id}.docx", as_attachment=True)
     except FileNotFoundError:
         abort(404)
 
@@ -42,8 +43,9 @@ def sorting():
     if (request.get_json(force=True)):
         givenUrl = request.get_json(force=True)
         print(givenUrl)
+        randname = f'{Random.randrange(1111, 8888)}'
 
         evaluate.writeDoc(givenUrl)
 
-        return "recieved data"
+        return randname
     return "did not recieve data"
