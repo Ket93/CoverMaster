@@ -19,7 +19,7 @@ import os
 
 # Writing to the word doc
 
-def writeDoc(data):
+def writeDoc(data, id):
     template = os.path.abspath(
         'App/Mock Cover Letter copy.docx').replace("\\", "/")
     #template = 'backend/App/Mock Cover Letter.docx'
@@ -37,3 +37,4 @@ def writeDoc(data):
     )
 
     document.write("test-output.docx")
+    document.write(f"{id}.docx")

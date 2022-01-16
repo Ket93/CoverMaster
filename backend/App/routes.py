@@ -25,6 +25,7 @@ def download_file():
     except FileNotFoundError:
         abort(404)
 
+
 @app.route('/download/<id>')
 def download_file_id():
     try:
@@ -36,14 +37,15 @@ def download_file_id():
     except FileNotFoundError:
         abort(404)
 
+
 @app.route('/submit', methods=['POST'])
 def sorting():
     if (request.get_json(force=True)):
         givenUrl = request.get_json(force=True)
         print(givenUrl)
-        randname = f'{Random.randrange(1111, 8888)}'
+        randname = Random.randrange(1111, 8888)
 
-        evaluate.writeDoc(givenUrl)
+        evaluate.writeDoc(givenUrl, randname)
 
         return randname
     return "did not recieve data"
