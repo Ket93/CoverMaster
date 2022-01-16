@@ -5,7 +5,7 @@ from flask import send_from_directory, abort
 import os
 
 
-app.config['DOWNLOAD_FILE'] = os.path.abspath('backend/App').replace("\\", "/")
+app.config['DOWNLOAD_FILE'] = os.path.abspath('App').replace("\\", "/")
 
 
 @app.route('/')
