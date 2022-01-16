@@ -2,11 +2,13 @@
 import requests
 import json
 from google.cloud import language_v1
+import os
 
 
 def analyze_text_sentiment(text):
+    jsonpath = os.path.abspath('App/services.json').replace("\\", "/")
     client = language_v1.LanguageServiceClient.from_service_account_json(
-        'backend/App/services.json')
+        jsonpath)
     document = language_v1.Document(
         content=text, type_=language_v1.Document.Type.PLAIN_TEXT)
 
@@ -20,8 +22,9 @@ def analyze_text_sentiment(text):
 
 def get_adjectives(text_content):
     adjectives = []
+    jsonpath = os.path.abspath('App/services.json').replace("\\", "/")
     client = language_v1.LanguageServiceClient.from_service_account_json(
-        'backend/App/services.json')
+        jsonpath)
     #client = language_v1.LanguageServiceClient.from_service_account_json('services.json')
 
     # text_content = 'This is a short sentence.'
@@ -50,4 +53,5 @@ def get_adjectives(text_content):
                 [text.content, analyze_text_sentiment(text.content)])
 
     adjectives = list(reversed(sorted(adjectives, key=lambda x: x[1])))
+    print(adjectives)
     return adjectives

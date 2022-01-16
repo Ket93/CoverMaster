@@ -83,7 +83,7 @@ def iter_block_items(parent):
             yield Table(child, parent)
 
 
-doc = docx.Document("backend/App/nwhacks cover letter.docx")
+#doc = docx.Document("backend/App/nwhacks cover letter.docx")
 
 
 def findReplace(doc, replaced, replace_str):
@@ -97,7 +97,4 @@ def findReplace(doc, replaced, replace_str):
             paragraph_replace_text(block, regex, replace_str)
 
 
-findReplace(doc, "{{Name}}", "Kevin")
-
-output = doc
-output.save('OutputDoc.docx')
+#findReplace(doc, "{{Name}}", "Kevin")
