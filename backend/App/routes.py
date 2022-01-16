@@ -1,11 +1,25 @@
 from asyncore import write
 from App import app, evaluate
 from flask.globals import request
+from flask import send_from_directory, abort
+import os
+
+
+app.config['DOWNLOAD_FILE'] = os.path.abspath('App').replace("\\", "/")
 
 
 @app.route('/')
 def index():
-    return "invalid"
+    return "Invalid"
+
+
+@app.route('/download')
+def download_file():
+    try:
+        return send_from_directory(app.config['DOWNLOAD_FILE'], path="Mock Cover Letter.docx",
+                                   as_attachment=True)
+    except FileNotFoundError:
+        abort(404)
 
 
 @app.route('/submit', methods=['POST'])

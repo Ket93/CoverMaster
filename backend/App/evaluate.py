@@ -2,6 +2,7 @@ from __future__ import print_function
 from mailmerge import MailMerge
 from datetime import date
 from monkeylearn import MonkeyLearn
+import os
 
 
 # data = [
@@ -19,7 +20,7 @@ from monkeylearn import MonkeyLearn
 # Writing to the word doc
 
 def writeDoc(data):
-    template = "backend/App/Mock Cover Letter.docx"
+    template = os.path.abspath('App/Mock Cover Letter.docx').replace("\\", "/")
     document = MailMerge(template)
     # print(document.get_merge_fields()) show all merged fields in Word doc
 
