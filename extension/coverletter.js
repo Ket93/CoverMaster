@@ -13,14 +13,19 @@ if (true) {
     var jobCountry = document.getElementsByClassName("np-view-question--23")[0];
     var jobPostal = document.getElementsByClassName("np-view-question--22")[0];
     var scrapedData = {
-        companyName: companyName.innerText || companyName.textContent,
-        companyDivision: companyDivision.innerText || companyDivision.textContent,
-        jobAddress: jobAddress.innerText || jobAddress.textContent,
-        jobCity: jobCity.innerText || jobCity.textContent,
-        jobProvince: jobProvince.innerText || jobProvince.textContent,
-        jobCountry: jobCountry.innerText || jobCountry.textContent,
-        jobPostal: jobPostal.innerText || jobPostal.textContent
+
     };
+    try {
+        scrapedData['companyName'] = companyName.innerText || companyName.textContent
+        scrapedData['companyDivision'] = companyDivision.innerText || companyDivision.textContent
+        scrapedData['jobAddress'] = jobAddress.innerText || jobAddress.textContent
+        scrapedData['jobCity'] = jobCity.innerText || jobCity.textContent
+        scrapedData['jobProvince'] = companyName.innerText || companyName.textContent
+        scrapedData['jobCountry'] = jobCountry.innerText || jobCountry.textContent
+        scrapedData['jobPostal'] = jobPostal.innerText || jobPostal.textContent
+    } catch (TypeError) {
+        console.log(scrapedData);
+    }
 
     console.log('sent something')
     chrome.storage.local.get(['options'], function (result) {
