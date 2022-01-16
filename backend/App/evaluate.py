@@ -26,6 +26,21 @@ def writeDoc(data, id, adjectives):
     document = MailMerge(template)
     # print(document.get_merge_fields()) show all merged fields in Word doc
 
+    if data["name"] == "undefined":
+        data["name"] = "[Full Name]"
+
+    if data["email"] == "undefined":
+        data["email"] = "[Email]"
+
+    if data["phone"] == "undefined":
+        data["phone"] = "[Phone]"
+
+    if data["address"] == "undefined":
+        data["address"] = "[Address]"
+
+    if data["zip"] == "undefined":
+        data["zip"] = "[Postal Code]"
+
     document.merge(
         Date='{:%d-%b-%Y}'.format(date.today()),
         companyName=data["companyName"],
@@ -34,17 +49,17 @@ def writeDoc(data, id, adjectives):
         Province=data["jobProvince"],
         Country=data["jobCountry"],
         postalCode=data["jobPostal"],
-        adj1=adjectives[0][0],
-        char1=adjectives[1][0],
-        adj2=adjectives[2][0],
-        trait1=adjectives[3][0],
-        trait2=adjectives[4][0]
+        adj1=adjectives[0][0].lower(),
+        char1=adjectives[1][0].lower(),
+        adj2=adjectives[2][0].lower(),
+        trait1=adjectives[3][0].lower(),
+        trait2=adjectives[4][0].lower(),
+        Phone=data["phone"],
+        Email=data["email"],
+        Name=data["name"],
+        personalAddress=data["address"],
+        personalPostal=data["zip"]
     )
 
-    print(adjectives[0][0])
-    print(adjectives[1][0])
-    print(adjectives[2][0])
-   # print(adjectives[3][0])
-   # print(adjectives[4][0])
     document.write("test-output.docx")
     document.write(f"{id}.docx")

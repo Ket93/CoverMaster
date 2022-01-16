@@ -50,4 +50,5 @@ def get_adjectives(text_content):
                 [text.content, analyze_text_sentiment(text.content)])
 
     adjectives = list(reversed(sorted(adjectives, key=lambda x: x[1])))
+    print(adjectives)
     return adjectives
