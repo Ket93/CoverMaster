@@ -13,18 +13,18 @@ console.log("Running")
 // });
 
 // when a message is sent from another script, it goes through this listener
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.message === 'test_url') {
-        const url = "https://34.130.223.251:25565/submit"
-        console.log('sent something')
-        fetch(url, {
-            method: "POST",
-            body: JSON.stringify(request.data)
-        }).then(response => response.text()).then(coverletterSITE => {
-            //open coverlettersite
-        });
-    };
-    return true;
-});
+// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+//     if (request.message === 'test_url') {
+//         const url = "https://34.130.223.251:25565/submit"
+//         console.log('sent something')
+//         fetch(url, {
+//             method: "POST",
+//             body: JSON.stringify(request.data)
+//         }).then(response => response.text()).then(coverletterSITE => {
+//             //open coverlettersite
+//         });
+//     };
+//     return true;
+// });
 
 

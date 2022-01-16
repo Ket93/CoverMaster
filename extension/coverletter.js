@@ -1,9 +1,10 @@
 
 var posting = document.querySelector("body > main > div.orbisModuleHeader > div > div > div:nth-child(1) > table > tbody > tr:nth-child(1) > td:nth-child(2) > span").innerText
-//const url = "http://localhost:25565/submit"
 console.log("Running cover letter script")
 if (posting === 'Approved') {
-    const url = "https://34.130.223.251:25565/submit"
+    // const url = "https://34.130.223.251:25565/submit"
+    const url = "http://localhost:25565/submit"
+
     var companyName = document.getElementsByClassName("table table-bordered")[3].rows[0].cells[1];
     var companyDivision = document.getElementsByClassName("table table-bordered")[3].rows[1].cells[1];
     var jobAddress = document.getElementsByClassName("np-view-question--18")[0];
@@ -20,9 +21,12 @@ if (posting === 'Approved') {
         jobCountry: jobCountry.innerText || jobCountry.textContent,
         jobPostal: jobPostal.innerText || jobPostal.textContent
     };
-    chrome.runtime.sendMessage({
-        message: 'test_url',
-        data: scrapedData
-    }, response => updateBackground(response.html))
-    
+
+    console.log('sent something')
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(request.data)
+    }).then(response => response.text()).then(coverletterSITE => {
+        //open coverlettersite
+    });
 };
