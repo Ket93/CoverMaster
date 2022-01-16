@@ -20,7 +20,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://waterlooworks.uwaterloo.ca/myAccount/hire-waterloo/other-jobs/jobs-postings.htm"
+        "https://waterlooworks.uwaterloo.ca/myAccount/co-op/coop-postings.htm"
       ],
       "js": [
         "coverletter.js"
