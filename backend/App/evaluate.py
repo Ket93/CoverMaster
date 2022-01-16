@@ -20,16 +20,6 @@ import os
 # Writing to the word doc
 
 def writeDoc(data, id, adjectives):
-    if os.path.isfile(os.path.abspath(
-           'customtemplate.docx')):
-        template = os.path.abspath(
-            'customtemplate.docx').replace("\\", "/")
-    else:
-        template = os.path.abspath(
-           'App/Mock Cover Letter.docx').replace("\\", "/")
-    # template = 'backend/App/Mock Cover Letter.docx'
-    document = MailMerge(template)
-    # print(document.get_merge_fields()) show all merged fields in Word doc
 
     if data["name"] == "undefined":
         data["name"] = "[Full Name]"
@@ -46,25 +36,38 @@ def writeDoc(data, id, adjectives):
     if data["zip"] == "undefined":
         data["zip"] = "[Postal Code]"
 
-    document.merge(
-        Date='{:%d-%b-%Y}'.format(date.today()),
-        companyName=data["companyName"],
-        Address=data["jobAddress"],
-        City=data["jobCity"],
-        Province=data["jobProvince"],
-        Country=data["jobCountry"],
-        postalCode=data["jobPostal"],
-        adj1=adjectives[0][0].lower(),
-        char1=adjectives[1][0].lower(),
-        adj2=adjectives[2][0].lower(),
-        trait1=adjectives[3][0].lower(),
-        trait2=adjectives[4][0].lower(),
-        Phone=data["phone"],
-        Email=data["email"],
-        Name=data["name"],
-        personalAddress=data["address"],
-        personalPostal=data["zip"]
-    )
+    if os.path.isfile(os.path.abspath(
+           'customtemplate.docx')):
+        template = os.path.abspath(
+            'customtemplate.docx').replace("\\", "/")
+    #    call custom merge functions here with template
+    else:
+        template = os.path.abspath(
+           'App/Mock Cover Letter.docx').replace("\\", "/")
+        document = MailMerge(template)
+        # print(document.get_merge_fields()) show all merged fields in Word doc
+
+        document.merge(
+            Date='{:%d-%b-%Y}'.format(date.today()),
+            companyName=data["companyName"],
+            Address=data["jobAddress"],
+            City=data["jobCity"],
+            Province=data["jobProvince"],
+            Country=data["jobCountry"],
+            postalCode=data["jobPostal"],
+            adj1=adjectives[0][0].lower(),
+            char1=adjectives[1][0].lower(),
+            adj2=adjectives[2][0].lower(),
+            trait1=adjectives[3][0].lower(),
+            trait2=adjectives[4][0].lower(),
+            Phone=data["phone"],
+            Email=data["email"],
+            Name=data["name"],
+            personalAddress=data["address"],
+            personalPostal=data["zip"]
+        )
+    # template = 'backend/App/Mock Cover Letter.docx'
+
 
     document.write("test-output.docx")
     document.write(f"{id}.docx")
