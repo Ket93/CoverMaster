@@ -5,7 +5,7 @@ from flask import send_from_directory, abort
 import os
 
 
-app.config['DOWNLOAD_FILE'] = os.path.abspath('App').replace("\\", "/")
+app.config['DOWNLOAD_FILE'] = os.path.abspath('./').replace("\\", "/")
 
 
 @app.route('/')
@@ -16,11 +16,11 @@ def index():
 @app.route('/download')
 def download_file():
     try:
-        return send_from_directory(app.config['DOWNLOAD_FILE'], path="Mock Cover Letter.docx",
+        return send_from_directory(app.config['DOWNLOAD_FILE'], path="test-output.docx",
                                    as_attachment=True)
     except TypeError:
         return send_from_directory(app.config['DOWNLOAD_FILE'],
-                                   filename="Mock Cover Letter.docx", as_attachment=True)
+                                   filename="test-output.docx", as_attachment=True)
     except FileNotFoundError:
         abort(404)
 
