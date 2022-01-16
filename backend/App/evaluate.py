@@ -20,7 +20,9 @@ import os
 # Writing to the word doc
 
 def writeDoc(data):
-    template = os.path.abspath('App/Mock Cover Letter.docx').replace("\\", "/")
+    template = os.path.abspath(
+        'backend/App/Mock Cover Letter.docx').replace("\\", "/")
+    #template = 'backend/App/Mock Cover Letter.docx'
     document = MailMerge(template)
     # print(document.get_merge_fields()) show all merged fields in Word doc
 

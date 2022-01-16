@@ -28,7 +28,7 @@ if (true) {
         fetch(url, {
             method: "POST",
             mode: 'no-cors',
-            body: JSON.stringify({...scrapedData, ...result.options})
+            body: JSON.stringify({ ...scrapedData, ...result.options })
         }).then(response => response.text()).then(response => {
             //this is the response from the server. (plaintext) ie, 
             console.log(response)

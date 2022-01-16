@@ -6,6 +6,7 @@ from docx.oxml.table import CT_Tbl
 from docx.oxml.text.paragraph import CT_P
 import re
 
+
 def paragraph_replace_text(paragraph, regex, replace_str):
     """Return `paragraph` after replacing all matches for `regex` with `replace_str`.
 
@@ -58,6 +59,7 @@ def paragraph_replace_text(paragraph, regex, replace_str):
 
     return paragraph
 
+
 def iter_block_items(parent):
     """
     Generate a reference to each paragraph and table child within *parent*,
@@ -80,16 +82,20 @@ def iter_block_items(parent):
         elif isinstance(child, CT_Tbl):
             yield Table(child, parent)
 
-doc = docx.Document("nwhacks cover letter.docx")
+
+doc = docx.Document("backend/App/nwhacks cover letter.docx")
+
+
 def findReplace(doc, replaced, replace_str):
     regex = re.compile(replaced)
     for block in iter_block_items(doc):
-        if isinstance(block,Table):
-            ## is a table?
+        if isinstance(block, Table):
+            # is a table?
             pass
         else:
-            ## is a paragraph?
-            paragraph_replace_text(block, regex, replace_str) 
+            # is a paragraph?
+            paragraph_replace_text(block, regex, replace_str)
+
 
 findReplace(doc, "{{Name}}", "Kevin")
 
