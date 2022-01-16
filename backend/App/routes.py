@@ -1,6 +1,6 @@
 from asyncore import write
 from random import randint
-from App import app
+from App import app, evaluate, language
 from flask.globals import request
 from flask import send_from_directory, abort
 import os
@@ -55,6 +55,6 @@ def sorting():
 @app.route('/savetemplate', methods=['POST'])
 def saveTemplate():
     print(request.files['template'])
-    request.files['template'].save('asdf2.docx')
+    request.files['template'].save('./customtemplate.docx')
 
     return "recieved"
