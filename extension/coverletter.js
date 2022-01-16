@@ -13,7 +13,13 @@ if (true) {
     var jobCountry = document.getElementsByClassName("np-view-question--23")[0];
     var jobPostal = document.getElementsByClassName("np-view-question--22")[0];
     var scrapedData = {
-
+        companyName: '',
+        companyDivision: '',
+        jobAddress: '',
+        jobCity: '',
+        jobProvince: '',
+        jobCountry: '',
+        jobPostal: ''
     };
     try {
         scrapedData['companyName'] = companyName.innerText || companyName.textContent
