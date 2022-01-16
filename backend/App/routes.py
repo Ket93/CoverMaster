@@ -25,7 +25,7 @@ def download_file():
         abort(404)
 
 @app.route('/download/<id>')
-def download_file(id):
+def download_file_id(id):
     try:
         return send_from_directory(app.config['DOWNLOAD_FILE'], path=f'{id}.docx',
                                    as_attachment=True)
