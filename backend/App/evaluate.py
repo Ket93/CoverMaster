@@ -28,13 +28,14 @@ def writeDoc(data, id):
 
     document.merge(
         Date='{:%d-%b-%Y}'.format(date.today()),
+        companyName=data["companyName"],
         Address=data["jobAddress"],
         City=data["jobCity"],
         Province=data["jobProvince"],
         Country=data["jobCountry"],
         postalCode=data["jobPostal"],
-        firstadjective="hi"
     )
 
+    print(data["jobCountry"])
     document.write("test-output.docx")
     document.write(f"{id}.docx")
