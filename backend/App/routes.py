@@ -1,5 +1,5 @@
 from asyncore import write
-from random import Random
+from random import randint
 from App import app, evaluate
 from flask.globals import request
 from flask import send_from_directory, abort
@@ -43,9 +43,9 @@ def sorting():
     if (request.get_json(force=True)):
         givenUrl = request.get_json(force=True)
         print(givenUrl)
-        randname = Random.randrange(1111, 8888)
+        randName = randint(1111, 20000)
 
-        evaluate.writeDoc(givenUrl, randname)
+        evaluate.writeDoc(givenUrl, randName)
 
-        return randname
+        return f'{randName}'
     return "did not recieve data"
