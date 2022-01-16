@@ -42,8 +42,8 @@ if (true) {
         console.log(scrapedData);
     }
 
-    console.log('sent something')
-    chrome.storage.local.get(['options'], function (result) {
+    console.log('saved something')
+    chrome.storage.local.get(['options'], function (result) { // users' options from options page (email, name, etc.)
         console.log('Value is: ', result.options)
         fetch(url, {
             method: "POST",
@@ -52,6 +52,7 @@ if (true) {
         }).then(response => response.text()).then(response => {
             //this is the response from the server. (plaintext) ie, 
             console.log(response)
+            console.log('recieved something?')
         });
     });
 
