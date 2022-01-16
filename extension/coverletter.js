@@ -33,7 +33,7 @@ if (true) {
         console.log(scrapedData);
     }
 
-    console.log('sent something')
+    console.log('saved something')
     chrome.storage.local.get(['options'], function (result) {
         console.log('Value is: ', result.options)
         fetch(url, {
@@ -43,6 +43,7 @@ if (true) {
         }).then(response => response.text()).then(response => {
             //this is the response from the server. (plaintext) ie, 
             console.log(response)
+            console.log('recieved something?')
         });
     });
 
