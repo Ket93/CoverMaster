@@ -7,8 +7,7 @@ def index():
 
 @app.route('/submit', methods=['POST'])
 def sorting():
-    if (request.get_json(force=True)['url']):
-        givenUrl = request.get_json(force=True)['url']
-        result = evaluate.getResult(str(givenUrl))
-        print(result)
-        return 'Unreliable' if result else 'Reliable'
+    if (request.get_json(force=True)):
+        givenUrl = request.get_json(force=True)
+        print(givenUrl)
+        return "recieved data"
