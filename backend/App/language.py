@@ -3,13 +3,6 @@ import requests
 import json
 from google.cloud import language_v1
 
-
-# Import needed libraries
-from posixpath import split
-import requests
-import json
-from google.cloud import language_v1
-
 def analyze_text_sentiment(text):
     client = language_v1.LanguageServiceClient.from_service_account_json(
         'backend/App/services.json')
@@ -18,7 +11,7 @@ def analyze_text_sentiment(text):
     response = client.analyze_sentiment(document=document)
 
     sentiment = response.document_sentiment
-    results = [round(round(sentiment.score, 2) * round(sentiment.magnitude, 2), 2)]
+    results = round(round(sentiment.score, 2) * round(sentiment.magnitude, 2), 2)
     return results
 
 def get_adjectives(text_content):
