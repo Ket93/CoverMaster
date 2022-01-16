@@ -9,7 +9,9 @@ chrome.storage.local.get(['options'], function (result) {
             options: {
                 email: '',
                 name: '',
-                phone: ''
+                phone: '',
+                address: '',
+                zip: ''
             }
         });
     };
