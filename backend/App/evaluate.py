@@ -2,7 +2,10 @@ from __future__ import print_function
 from mailmerge import MailMerge
 from datetime import date
 from monkeylearn import MonkeyLearn
+from App import customworddoc
 import os
+import docx
+from docx.document import Document
 
 
 # data = [
@@ -40,6 +43,21 @@ def writeDoc(data, id, adjectives):
            'customtemplate.docx')):
         template = os.path.abspath(
             'customtemplate.docx').replace("\\", "/")
+
+        document = docx.Document(template)
+
+        # replacing all default fields
+        fields = ["<<CompanyName>>", "<<Date>>", "<<Address>>", "<<City>>", "<<Province>>", "<<Country>>", "<<PostalCode>>"]
+        names = [data["companyName"], '{:%d-%b-%Y}'.format(date.today()), data["jobAddress"], data["jobCity"], data["jobProvince"], data["jobCountry"], data["jobPostal"]]
+        for option in range(len(fields)):
+            customworddoc.findReplace(document, fields[option], names[option])
+        
+        # replacing adjectives
+        for ad in range(10):
+            customworddoc.findReplace(document, "<<adj" + str(ad + 1) + ">>", adjectives[ad][0].lower())
+
+        document.save("test-output.docx")
+            
     #    call custom merge functions here with template
     else:
         template = os.path.abspath(
@@ -66,8 +84,9 @@ def writeDoc(data, id, adjectives):
             personalAddress=data["address"],
             personalPostal=data["zip"]
         )
+        document.write("test-output.docx")
+        document.write(f"{id}.docx")
     # template = 'backend/App/Mock Cover Letter.docx'
 
 
-    document.write("test-output.docx")
-    document.write(f"{id}.docx")
+    
