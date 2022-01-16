@@ -18,7 +18,7 @@ if (true) {
         jobAddress: jobAddress.innerText || jobAddress.textContent,
         jobCity: jobCity.innerText || jobCity.textContent,
         jobProvince: jobProvince.innerText || jobProvince.textContent,
-        // jobCountry: jobCountry.innerText || jobCountry.textContent,
+        jobCountry: jobCountry.innerText || jobCountry.textContent,
         jobPostal: jobPostal.innerText || jobPostal.textContent
     };
 
