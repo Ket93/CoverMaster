@@ -24,6 +24,16 @@ def download_file():
     except FileNotFoundError:
         abort(404)
 
+@app.route('/download/<id>')
+def download_file(id):
+    try:
+        return send_from_directory(app.config['DOWNLOAD_FILE'], path=f'{id}.docx',
+                                   as_attachment=True)
+    except TypeError:
+        return send_from_directory(app.config['DOWNLOAD_FILE'],
+                                   filename=f'{id}.docx', as_attachment=True)
+    except FileNotFoundError:
+        abort(404)
 
 @app.route('/submit', methods=['POST'])
 def sorting():
