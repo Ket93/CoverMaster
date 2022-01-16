@@ -5,6 +5,7 @@ from docx.table import _Cell, Table
 from docx.oxml.table import CT_Tbl
 from docx.oxml.text.paragraph import CT_P
 
+
 def iter_block_items(parent):
     """
     Generate a reference to each paragraph and table child within *parent*,
@@ -27,23 +28,37 @@ def iter_block_items(parent):
         elif isinstance(child, CT_Tbl):
             yield Table(child, parent)
 
-doc = docx.Document("nwhacks cover letter.docx")
+#doc = docx.Document("nwhacks cover letter.docx")
 
-for block in iter_block_items(doc):
-    if isinstance(block,Table):
-        ## is a table?
-        pass
-    else:
-        ## is a paragraph? 
-        print(block.text)
 
-def find_curly(text, replace):
+# for block in iter_block_items(doc):
+#     if isinstance(block, Table):
+#         # is a table?
+#         pass
+#     else:
+#         # is a paragraph?
+#         print(block.text)
+
+
+def find_curly(text, toBeReplaced, replace):
     line = text.split()
     print(line)
     for word in range(len(line)):
-        if line[word][0] == "{" and (line[word][-1] == "}" or line[word][-2] == "}"):
+
+        noPuncWord = ""
+        for char in line[word]:
+            if ord(char) >= 65 and ord(char) <= 90:
+                noPuncWord += char
+
+            elif ord(char) >= 97 and ord(char) <= 122:
+                noPuncWord += char
+
+        if noPuncWord == toBeReplaced and (line[word][0] == "{" and (line[word][-1] == "}" or line[word][-2] == "}")):
             line[word] = replace
+
     line = " ".join(line)
     return line
 
-print(find_curly("May {{Name}} not turn out to be {{adjective}}.", "kids"))
+
+print(find_curly(
+    "May {{Name}} not turn out to be {{adjective}}.", "Name", "Kevin"))
