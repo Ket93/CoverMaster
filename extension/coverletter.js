@@ -12,6 +12,9 @@ if (true) {
     var jobProvince = document.getElementsByClassName("np-view-question--21")[0];
     var jobCountry = document.getElementsByClassName("np-view-question--23")[0];
     var jobPostal = document.getElementsByClassName("np-view-question--22")[0];
+    var jobSummary = document.getElementsByClassName("np-view-question--29")[0];
+    var jobResp = document.getElementsByClassName("np-view-question--30")[0];
+    var requiredSkills = document.getElementsByClassName("np-view-question--31")[0];
     var scrapedData = {
         companyName: '',
         companyDivision: '',
@@ -19,7 +22,10 @@ if (true) {
         jobCity: '',
         jobProvince: '',
         jobCountry: '',
-        jobPostal: ''
+        jobPostal: '',
+        jobSummary: '',
+        jobResp: '',
+        requiredSkills: ''
     };
     try {
         scrapedData['companyName'] = companyName.innerText || companyName.textContent
@@ -29,6 +35,9 @@ if (true) {
         scrapedData['jobProvince'] = companyName.innerText || companyName.textContent
         scrapedData['jobCountry'] = jobCountry.innerText || jobCountry.textContent
         scrapedData['jobPostal'] = jobPostal.innerText || jobPostal.textContent
+        scrapedData['jobSummary'] = jobSummary.innerText || jobSummary.textContent
+        scrapedData['jobResp'] = jobResp.innerText || jobResp.textContent
+        scrapedData['requiredSkills'] = requiredSkills.innerText || requiredSkills.textContent
     } catch (TypeError) {
         console.log(scrapedData);
     }
