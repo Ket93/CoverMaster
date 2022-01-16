@@ -49,3 +49,13 @@ def sorting():
 
         return f'{randName}'
     return "did not recieve data"
+
+@app.route('/savetemplate', methods=['POST'])
+def saveTemplate():
+    print(request.files['template'])
+
+    with open('/template.docx', 'wb') as f:
+        f.write(request.files['template'])
+        print('saved?')
+
+    return "recieved"

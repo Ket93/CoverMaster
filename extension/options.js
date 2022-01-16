@@ -26,13 +26,7 @@ chrome.storage.local.get(['options'], function (result) {
     document.getElementById('zip').value = newOptions['zip'];
     document.getElementById('address').value = newOptions['address'];
 });
-template.onchange = function (event) {
-    var fileList = template.files;
-    console.log();
-    // chrome.storage.local.set({
-    //     options: { ...newOptions, template: fileList }
-    // }, () => console.log(newOptions));
-}
+
 const zero = 0n
 const shift = 8n
 
@@ -44,19 +38,30 @@ function asciiToBinary(str) {
     }
     return n.toString(2).padStart(len * 8, 0)
 }
+
 button.addEventListener('click', async function () {
     newOptions['email'] = email.value;
     newOptions['name'] = nname.value;
     newOptions['phone'] = phone.value;
     newOptions['address'] = address.value;
     newOptions['zip'] = zip.value;
-    try {
-        newOptions['template'] = asciiToBinary(await template.files[0].text());
-    } catch (TypeError) {
-        console.log('no template')
-    }
 
-    console.log(newOptions['template'])
+    // try {
+    //     let terriblecodinghabitvariable = await template.files[0]
+    //     console.log(terriblecodinghabitvariable)
+    //     fetch("http://localhost:25565/savetemplate", {
+    //         method: "POST",
+    //         mode: 'no-cors',
+    //         body: await template.files[0]
+    //     }).then(out => {
+    //         console.log(out)
+    //         console.log('sent template')
+    //     });
+    // } catch (TypeError) {
+    //     console.log('no template')
+    // }
+
+    // console.log(newOptions['template'])
     chrome.storage.local.set({
         options: { ...newOptions }
     }, () => console.log(newOptions));

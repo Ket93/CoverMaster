@@ -1,5 +1,5 @@
 
-var posting = document.querySelector("body > main > div.orbisModuleHeader > div > div > div:nth-child(1) > table > tbody > tr:nth-child(1) > td:nth-child(2) > span").innerText
+// var posting = document.querySelector("body > main > div.orbisModuleHeader > div > div > div:nth-child(1) > table > tbody > tr:nth-child(1) > td:nth-child(2) > span").innerText
 console.log("Running cover letter script")
 if (true) {
     // const url = "https://34.130.223.251:25565/submit"
@@ -49,11 +49,9 @@ if (true) {
             method: "POST",
             mode: 'no-cors',
             body: JSON.stringify({ ...scrapedData, ...result.options })
-        }).then(response => response.text()).then(response => {
-            //this is the response from the server. (plaintext) ie, 
-            console.log(response)
+        }).then(out => {
+            console.log(out)
             console.log('recieved something?')
         });
     });
-
 };
