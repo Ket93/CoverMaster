@@ -25,8 +25,10 @@ if (posting === 'Approved') {
     console.log('sent something')
     fetch(url, {
         method: "POST",
-        body: JSON.stringify(request.data)
-    }).then(response => response.text()).then(coverletterSITE => {
-        //open coverlettersite
+        mode: 'no-cors',
+        body: JSON.stringify(scrapedData)
+    }).then(response => response.text()).then(response => {
+        //this is the response from the server. (plaintext) ie, 
+        console.log(response)
     });
 };

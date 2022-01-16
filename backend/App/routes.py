@@ -11,3 +11,4 @@ def sorting():
         givenUrl = request.get_json(force=True)
         print(givenUrl)
         return "recieved data"
+    return "did not recieve data"
