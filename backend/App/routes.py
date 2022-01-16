@@ -1,4 +1,4 @@
-from App import app, evaluate
+from App import app
 from flask.globals import request
 
 @app.route('/')
