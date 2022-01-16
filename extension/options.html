@@ -128,9 +128,13 @@
     }
 
     .btn-item {
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
       display: inline-block;
-      margin: 20px 5px 0;
-      padding: 15px;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
     }
 
     button {
@@ -183,7 +187,8 @@
       <div class="btn-group">
         <form action="http://localhost:25565/savetemplate" method="post" enctype="multipart/form-data">
           <input class="btn-item" id="file" type="file" enctype="multipart/form-data" name="template">
-          <input type="submit" value="Submit" href="/">
+<!--          <input type="submit" value="Submit" href="/">-->
+          <button id="submit" href="/" style="height:55px; width:100px">Submit</button>
         </form>
       </div>
     </div>
@@ -199,12 +204,8 @@
         <input id="address" type="text" placeholder="Address">
         <input id="zip" type="text" placeholder="Postal Code">
       </div>
-      <div class="checkbox">
-        <input type="checkbox" name="checkbox"><span>I agree to the <a
-            href="https://www.w3docs.com/privacy-policy">Privacy Poalicy for W3Docs.</a></span>
-      </div>
-      <button id="save">save</button>
-    </div class="div-form">
+      <button id="save" style="font-size:20px; height:55px">Save</button>
+    </div>
   </div>
 </body>
 <script src="options.js"></script>
