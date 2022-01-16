@@ -52,7 +52,7 @@
     }
 
     .left-part,
-    form {
+    .div-form {
       padding: 25px;
     }
 
@@ -64,7 +64,7 @@
       font-size: 72px;
     }
 
-    form {
+    .div-form {
       background: rgba(0, 0, 0, 0.7);
     }
 
@@ -155,7 +155,7 @@
       }
 
       .left-part,
-      form {
+      .div-form {
         flex: 1;
         height: auto;
       }
@@ -180,10 +180,10 @@
         &lt&ltPostalCode&gt&gt = Postal Code
       </pre>
       <div class="btn-group">
-        <a class="btn-item" href="https://www.w3docs.com/learn-html.html">Upload Custom Template</a>
+        <input class="btn-item" id="file" type="file">
       </div>
     </div>
-    <form>
+    <div class="div-form">
       <div class="title">
         <i class="fas fa-pencil-alt"></i>
         <h2>Enter your info here</h2>
@@ -191,17 +191,17 @@
       <div class="info">
         <input id="name" class="fname" type="text" name="name" placeholder="Full name">
         <input id="email" type="text" placeholder="Email">
-        <input id="phone" type="text" placeholder="Phone number">
+        <input id="phone" type="tel" placeholder="Phone number">
         <input id="address" type="text" placeholder="Address">
         <input id="zip" type="text" placeholder="Postal Code">
       </div>
       <div class="checkbox">
         <input type="checkbox" name="checkbox"><span>I agree to the <a
-            href="https://www.w3docs.com/privacy-policy">Privacy Policy for W3Docs.</a></span>
+            href="https://www.w3docs.com/privacy-policy">Privacy Poalicy for W3Docs.</a></span>
       </div>
-      <button id="save">Submit</button>
-    </form>
+      <button id="save">save</button>
+    </div class="div-form">
   </div>
 </body>
-
+<script src="options.js"></script>
 </html>
