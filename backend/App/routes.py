@@ -1,6 +1,6 @@
 from asyncore import write
 from random import randint
-from App import app, evaluate
+from App import app, evaluate, language
 from flask.globals import request
 from flask import send_from_directory, abort
 import os
@@ -45,7 +45,8 @@ def sorting():
         print(givenUrl)
         randName = randint(1111, 20000)
 
-        evaluate.writeDoc(givenUrl, randName)
+        evaluate.writeDoc(givenUrl, randName, language.get_adjectives(
+            givenUrl["jobSummary"]+givenUrl["jobResp"]+givenUrl["requiredSkills"]))
 
         return f'{randName}'
     return "did not recieve data"

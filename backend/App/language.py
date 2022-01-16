@@ -4,6 +4,20 @@ import json
 from google.cloud import language_v1
 
 
+def analyze_text_sentiment(text):
+    client = language_v1.LanguageServiceClient.from_service_account_json(
+        'backend/App/services.json')
+    document = language_v1.Document(
+        content=text, type_=language_v1.Document.Type.PLAIN_TEXT)
+
+    response = client.analyze_sentiment(document=document)
+
+    sentiment = response.document_sentiment
+    results = round(round(sentiment.score, 2) *
+                    round(sentiment.magnitude, 2), 2)
+    return results
+
+
 def get_adjectives(text_content):
     adjectives = []
     client = language_v1.LanguageServiceClient.from_service_account_json(
@@ -26,14 +40,14 @@ def get_adjectives(text_content):
 
     response = client.analyze_syntax(
         request={'document': document, 'encoding_type': encoding_type})
+
     for token in response.tokens:
         text = token.text
         part_of_speech = token.part_of_speech
         wordtype = language_v1.PartOfSpeech.Tag(part_of_speech.tag).name
         if wordtype == "ADJ":
-            adjectives.append(text.content)
+            adjectives.append(
+                [text.content, analyze_text_sentiment(text.content)])
 
+    adjectives = list(reversed(sorted(adjectives, key=lambda x: x[1])))
     return adjectives
-
-
-print(get_adjectives("	1Password is looking for promising new programmers to join us and gain valuable experience in a well-established team of developers. Our team is a friendly and welcoming environment for programmers with all levels of experience. We will do our best to help you realize your potential as a developer. The hope is that you'll leave with a passion for learning, some new friends, and the self-confidence to take on whatever comes next."))
