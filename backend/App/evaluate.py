@@ -47,8 +47,8 @@ def writeDoc(data, id, adjectives):
         document = docx.Document(template)
 
         # replacing all default fields
-        fields = ["<<CompanyName>>", "<<Date>>", "<<Address>>", "<<City>>", "<<Province>>", "<<Country>>", "<<PostalCode>>"]
-        names = [data["companyName"], '{:%d-%b-%Y}'.format(date.today()), data["jobAddress"], data["jobCity"], data["jobProvince"], data["jobCountry"], data["jobPostal"]]
+        fields = ["<<CompanyName>>", "<<Date>>", "<<Address>>", "<<City>>", "<<Province>>", "<<Country>>", "<<PostalCode>>", "<<Phone>>", "<<Email>>", "<<Name>>", "<<YourAddress>>", "<<Zip>>"]
+        names = [data["companyName"], '{:%d-%b-%Y}'.format(date.today()), data["jobAddress"], data["jobCity"], data["jobProvince"], data["jobCountry"], data["jobPostal"], data['phone'], data['email'], data['name'], data['address'], data['zip']]
         for option in range(len(fields)):
             customworddoc.findReplace(document, fields[option], names[option])
         
