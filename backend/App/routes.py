@@ -17,7 +17,7 @@ def index():
 def download_file():
     try:
         return send_from_directory(app.config['DOWNLOAD_FILE'], path="Mock Cover Letter.docx",
-                                   as_attachment=True)
+                                   filename="Mock Cover Letter.docx", as_attachment=True)
     except FileNotFoundError:
         abort(404)
 
