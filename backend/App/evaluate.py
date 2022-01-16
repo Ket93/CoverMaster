@@ -34,7 +34,17 @@ def writeDoc(data, id, adjectives):
         Province=data["jobProvince"],
         Country=data["jobCountry"],
         postalCode=data["jobPostal"],
+        adj1=adjectives[0][0],
+        char1=adjectives[1][0],
+        adj2=adjectives[2][0],
+        trait1=adjectives[3][0],
+        trait2=adjectives[4][0]
     )
 
+    print(adjectives[0][0])
+    print(adjectives[1][0])
+    print(adjectives[2][0])
+   # print(adjectives[3][0])
+   # print(adjectives[4][0])
     document.write("test-output.docx")
     document.write(f"{id}.docx")
