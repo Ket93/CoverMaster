@@ -39,6 +39,15 @@ def writeDoc(data, id, adjectives):
     if data["zip"] == "undefined":
         data["zip"] = "[Postal Code]"
 
+    if data["jobAddress"] == "undefined":
+        data["jobAddress"] = "[Job Address]"
+    if data["companyName"] == "undefined":
+        data["companyName"] = "[Company Name]"
+    if data["jobCity"] == "undefined":
+        data["jobCity"] = "[Job city]"
+    if data["YourAddress"] == "undefined":
+        data["address"] = "[Your Address]"
+
     if os.path.isfile(os.path.abspath(
            'customtemplate.docx')):
         template = os.path.abspath(
@@ -50,7 +59,10 @@ def writeDoc(data, id, adjectives):
         fields = ["<<CompanyName>>", "<<Date>>", "<<Address>>", "<<City>>", "<<Province>>", "<<Country>>", "<<PostalCode>>", "<<Phone>>", "<<Email>>", "<<Name>>", "<<YourAddress>>", "<<Zip>>"]
         names = [data["companyName"], '{:%d-%b-%Y}'.format(date.today()), data["jobAddress"], data["jobCity"], data["jobProvince"], data["jobCountry"], data["jobPostal"], data['phone'], data['email'], data['name'], data['address'], data['zip']]
         for option in range(len(fields)):
-            customworddoc.findReplace(document, fields[option], names[option])
+            try: 
+                customworddoc.findReplace(document, fields[option], names[option])
+            except KeyError:
+                pass
         
         # replacing adjectives
         for ad in range(10):
