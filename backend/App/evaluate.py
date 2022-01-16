@@ -20,20 +20,21 @@ import os
 # Writing to the word doc
 
 def writeDoc(data):
-    template = os.path.abspath(
-        'App/Mock Cover Letter copy.docx').replace("\\", "/")
-    #template = 'backend/App/Mock Cover Letter.docx'
+  #  template = os.path.abspath(
+    #    'App/Mock Cover Letter copy.docx').replace("\\", "/")
+    template = 'backend/App/Mock Cover Letter.docx'
     document = MailMerge(template)
     # print(document.get_merge_fields()) show all merged fields in Word doc
 
     document.merge(
         Date='{:%d-%b-%Y}'.format(date.today()),
+        companyName=data["companyName"],
         Address=data["jobAddress"],
         City=data["jobCity"],
         Province=data["jobProvince"],
         Country=data["jobCountry"],
         postalCode=data["jobPostal"],
-        firstadjective="hi"
     )
 
+    print(data["jobCountry"])
     document.write("test-output.docx")

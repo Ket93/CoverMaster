@@ -24,6 +24,7 @@ def download_file():
     except FileNotFoundError:
         abort(404)
 
+
 @app.route('/download/<id>')
 def download_file_id(id):
     try:
@@ -34,6 +35,7 @@ def download_file_id(id):
                                    filename=f'{id}.docx', as_attachment=True)
     except FileNotFoundError:
         abort(404)
+
 
 @app.route('/submit', methods=['POST'])
 def sorting():
