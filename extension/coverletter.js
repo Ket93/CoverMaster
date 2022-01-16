@@ -32,7 +32,7 @@ if (true) {
         scrapedData['companyDivision'] = companyDivision.innerText || companyDivision.textContent
         scrapedData['jobAddress'] = jobAddress.innerText || jobAddress.textContent
         scrapedData['jobCity'] = jobCity.innerText || jobCity.textContent
-        scrapedData['jobProvince'] = companyName.innerText || companyName.textContent
+        scrapedData['jobProvince'] = jobProvince.innerText || jobProvince.textContent
         scrapedData['jobCountry'] = jobCountry.innerText || jobCountry.textContent
         scrapedData['jobPostal'] = jobPostal.innerText || jobPostal.textContent
         scrapedData['jobSummary'] = jobSummary.innerText || jobSummary.textContent
