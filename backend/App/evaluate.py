@@ -31,6 +31,7 @@ def writeDoc(data):
         Address=data["jobAddress"],
         City=data["jobCity"],
         Province=data["jobProvince"],
+        Country=data["jobCountry"],
         postalCode=data["jobPostal"],
         firstadjective="hi"
     )
